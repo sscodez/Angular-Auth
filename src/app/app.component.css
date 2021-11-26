@@ -1,0 +1,131 @@
+.div-to-align {
+    width: 75%;
+  
+    padding: 40px 20px;
+ 
+    align-items: center;
+    justify-content: center;
+    margin: 100px 100px 100px 100px
+    /* .... */
+}
+.nav-items {
+    justify-content: flex-end;
+}
+h4{
+    color:whitesmoke;
+    
+}
+.error{
+    color: red;
+    font-size: 20px;
+}
+.success{
+    color: green;
+    font-size: 20px;
+} 
+.button {
+    margin: 8px;
+    width: 128px;
+}
+.action{
+    position:sticky;
+    top:30px;
+    right:50px;
+}
+.action .profile{
+    position:sticky;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    overflow:hidden;
+}
+.action .profile img{
+    position:relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:center;
+}
+.menu{
+    position: absolute;
+    top:45px;
+    right:-10px;
+    padding: 10px 20px;
+    background:#f1efef;
+    z-index: 3;
+    width:200px;
+    box-sizing: 0 5px 25px rgba(0,0,0,0.1);
+    border-radius:5px;
+    visibility:  hidden;
+    opacity:0;
+}
+.active{
+    position: absolute;
+    top:45px;
+    right:-10px;
+    padding: 10px 20px;
+    background:#f1efef;
+    width:200px;
+    box-sizing: 0 5px 25px rgba(0,0,0,0.1);
+    border-radius:1px;
+    transition: 0.5s;
+    z-index: 1;
+    visibility: visible;
+    opacity:1;
+}
+.active::before{
+    content:'';
+    position:absolute;
+    top: -5px;
+    right:28px;
+    width:20px;
+    height:20px;
+    transform:rotate(45deg);
+    background:rgb#f1efef;
+    z-index: 1;
+}
+.active h3{
+    width:100%;
+    text-align:center;
+    font-size: 18px;
+    padding:20px 0;
+    font-weight:500;
+    font-size:18px;
+    color:#555;
+    line-height:1.2rem;
+
+}
+.active h3 span {
+    font-size: 14px;
+    font-weight:400;
+    color:#cecece;
+    
+}
+.active ul li  {
+list-style: none;   
+padding:10px 0 ;
+border-top:1px solid rgba(0,0,0,0.05);
+direction:flex;
+align-items:center;
+justify-content: center;
+}
+.active ul li img{
+    max-width:20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.active ul li:hover img{
+    
+    opacity: 1;
+}
+.active ul li a {
+    display:inline-block;
+    text-decoration: none;
+}
+.active ul li:hover {
+    
+   color:#ff5d94;
+}

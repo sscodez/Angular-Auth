@@ -1,0 +1,75 @@
+
+
+    <div class="container-fluid">
+      <h4>Welcome {{User.displayName? User.displayName :'User'}}</h4>
+      <div class="d-flex">
+      <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" >Add Employee</button>
+    </div>
+  </div>
+  
+     
+  
+  
+
+
+
+<div class="div-to-align">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Edit/Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; index as i">
+    
+     <th scope="row">{{ i + 1 }}</th>
+    
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td (click)="onDeleteProducts(i)">Delete</td>
+  </tr>
+  </tbody>
+</table>
+
+ 
+ 
+
+
+</div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Student Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label" >Id</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #id>
+            <label for="exampleInputEmail1" class="form-label" > Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #name>
+            
+         
+            
+          </div>
+         
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onAddProducts(id,name) ">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+

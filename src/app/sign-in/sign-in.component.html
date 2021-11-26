@@ -1,0 +1,26 @@
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+   {{error}}
+</div>
+<div class="div-to-align">
+    <h5>{{loginMode ? 'SIGN IN ':'SIGN UP'}} </h5>
+  <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3" >
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input     formControlName="email" type="email" class="form-control"  aria-describedby="emailHelp">
+      <small class="text-danger">Please Enter Password</small>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input  ngClass="{
+        'error': form.get('password').invalid && form.get('password').touched,
+    }"  formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+      <small class="text-danger" >Please Enter Password</small>
+    </div>
+   
+  
+    <button type="submit" class="btn btn-primary">Submit</button><br><br>
+    <p>{{loginMode ? 'Dont have account ?':'Already have account'}} <a  class="blue"  (click)="onModeSwitch()">{{loginMode ? 'Create One':'Sign in'}}</a></p>   
+     <a class="blue">Forgot Password</a>
+  </form>
+  </div>

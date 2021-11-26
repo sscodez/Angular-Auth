@@ -1,0 +1,53 @@
+<div class="container-fluid px-1 py-4 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-5 col-lg-7 col-md-8 col-10 text-center">
+            <div class="card">
+                <h4 class="text-center mb-4">View Profile</h4>
+
+                <div class="row justify-content-between mx-1">
+                    <label class="form-control-label px-3">Edit mode: <span class="badge "
+                            [ngClass]="{'badge-success':!editMode,'badge-danger':editMode}">{{editMode}}</span></label>
+                    <button type="button" class="btn btn-success  flex-column d-flex " routerLink="/profile"
+                        [queryParams]="{EditMode:true}">Edit Profile</button>
+
+                </div>
+                <br>
+                <hr />
+                <br>
+                <form class="form-card" [formGroup]="form" (ngSubmit)="onSubmit">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label>{{editMode ?'Enter' : ''}}
+                                Name<span class="text-danger"> *</span></label>
+                            <h6><span *ngIf="!editMode" class="badge badge-warning text-left ">{{profileInfo.displayName}}</span></h6>
+                            <input *ngIf="editMode" type="text" id="name" name="name"  formControlName="name"
+                                placeholder="Enter your first name">
+                        </div>
+                    </div>
+                    <hr />
+                    <br>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label>{{editMode ?'Enter' : ''}} Profile
+                                Picture URL<span class="text-danger"> *</span></label>
+                            <h6><span *ngIf="!editMode"
+                                    class="badge badge-warning text-left ">{{profileInfo.photoUrl}}</span></h6>
+                            <input *ngIf="editMode"   formControlName="url" type="text" id="url" name="url" placeholder="Enter Picture Url">
+                        </div>
+                    </div>
+                    <br>
+                    <hr />
+                    <br>
+                    <div class="row justify-content-start  col-sm-6 flex-column d-flex">
+                    </div>
+                    <div class="row justify-content-start mx-1" *ngIf="editMode">
+                        <button type="button" class="btn btn-primary  flex-column d-flex " (click)="onSubmit()">Save
+                            Profile</button>
+
+                        <button type="button" class="btn btn-dark  flex-column d-flex"
+                            (click)="onDiscard()">Discard</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

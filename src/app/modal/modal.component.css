@@ -1,0 +1,164 @@
+.div-to-align {
+    width: 75%;
+  
+    padding: 40px 20px;
+ 
+    align-items: center;
+    justify-content: center;
+    margin: 100px 100px 100px 100px
+    /* .... */
+}
+h4{
+    color:rgb(8, 6, 6);
+    font-weight:100;
+}
+.gh{
+    z-index: 0;
+}
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Sans-serif';
+  background-color: whitesmoke;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  
+}
+
+.card {
+  margin: 1rem;
+  width: 300px;
+  height: 500px;
+  padding: .5rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px 4px rgba(black, .2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .title {
+    color: white;
+    margin: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 50px;
+    transition: .2s;
+    cursor: pointer;
+    
+    &--legendary {
+      background-color: #f4d03f;
+      &:hover {
+        box-shadow: 0 0 12px rgba(#f4d03f, .8);
+      }
+    }
+    
+        &--epic {
+      background-color: #8c14fc;
+      &:hover {
+        box-shadow: 0 0 12px rgba(#8c14fc, .8);
+      }
+    }
+    
+        &--common {
+      background-color: #2ecc71;
+      &:hover {
+        box-shadow: 0 0 12px rgba(#2ecc71, .8);
+      }
+    }
+    
+  }
+  
+  .desc {
+    text-align: center;
+  }
+  
+  .actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    button {
+      padding: .5rem .8rem;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+      outline: 0;
+      transition: background-color .4s, color .4s, transform .1s;
+      
+      &:hover {
+        color: white;
+        box-shadow: 0 0 24px rgba(black, .2);
+      }
+      
+      &:active {
+        transform: scale(0.95);
+        box-shadow: 0 0 16px rgba(black, .3);
+      }
+    }
+    
+    &__like {
+      &:hover {
+        background-color: #00b16a;
+      }
+    }
+    
+        &__trade {
+      &:hover {
+        background-color: #3498db;
+      }
+    }
+    
+        &__cancel {
+      &:hover {
+        background-color: #c0392b;
+      }
+    }
+  }
+}
+
+p {
+  margin-top: 1rem;
+  color: #484848;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #2574a9;
+}
+
+.active {
+  background-color: #00b16a;
+}
+
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
