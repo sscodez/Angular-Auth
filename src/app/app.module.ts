@@ -19,7 +19,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 
 const appRoutes:Routes=[
   {path:'',component:SignInComponent},  
-  {path:'modal',component:ModalComponent},
+  {path:'modal',canActivate:[AuthGuard],component:ModalComponent},
   {path:'sign-in',component:SignInComponent},
   {path:'profile',component:ProfileComponent},
   {path:'change-password',component:ChangePasswordComponent}
