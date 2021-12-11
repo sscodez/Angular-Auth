@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="container mt-4 mb-4 p-3 d-flex justify-content-center  "
+                *ngFor="let user of User ; let i=index">
+                <div class="card p-4">
+                    <div class=" image d-flex flex-column justify-content-center align-items-center"> <button
+                            class="btn btn-secondary"> <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png" height="100"
+                                width="100" /></button> <span class="name mt-3">{{user.firstname}}  {{user.lastname}}</span> <span
+                            class="idd">{{user.class}}</span>
+                        <!-- <div class=" d-flex mt-3"> <button class="btn1 btn-dark" >Edit Profile</button>  -->
+                            <div>
+                            <button    class="btn1 btn-danger" (click)="removeUser(user)">Delete Profile</button> </div>
+                        <div class="text mt-3"> <span>{{user.Message}}
+                            </span> </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- https://i.imgur.com/wvxPV9S.png -->

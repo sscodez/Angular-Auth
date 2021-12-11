@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
      name: [null,[ Validators.required,Validators.minLength(4)]],
-      url: [null, [Validators.required,Validators.minLength(4)]],
+      picture: [null, [Validators.required,Validators.minLength(4)]],
  
       })
       this.activatedRoute.queryParamMap.subscribe(res=>{
@@ -36,9 +36,10 @@ export class ProfileComponent implements OnInit {
       })
       this._authService.profileInfo.subscribe(res=>{
    
+        this.profileInfo=res;
         this.form.setValue({
           name:res.displayName,
-          url:res.photoUrl
+          picture:res.photoUrl
         })
      })
   }

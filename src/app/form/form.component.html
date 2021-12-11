@@ -1,0 +1,66 @@
+
+
+<div class="container"> <div class=" text-center mt-5 ">
+    
+</div>
+<div class="row ">
+    <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+                <div class="container">
+                    <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_name">Firstname *</label> <input id="form_name" type="text" name="name"  formControlName="firstname" class="form-control" placeholder="Please enter  firstname *" required="required" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"> </div>
+                               
+                                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                                        <div *ngIf="f.firstname.errors.minlength">Minimum Length is 6</div>
+                                        <div *ngIf="f.firstname.errors.maxlength">Maximum Length is 20</div>
+                                      </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_lastname">Lastname *</label> <input id="form_lastname" type="text" name="surname" formControlName="lastname" class="form-control" placeholder="Please enter lastname *" required="required"     [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"> </div>
+                                    
+                                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                                        <div *ngIf="f.lastname.errors.minlength">Minimum Length is 6</div>
+                                        <div *ngIf="f.lastname.errors.maxlength">Maximum Length is 20</div>
+                                      </div>
+                                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_email">Class*</label> <input id="class" type="number" name="class" class="form-control" placeholder="Please enter class *" required="required" formControlName="class"    [ngClass]="{ 'is-invalid': submitted && f.class.errors }"> </div>
+                                
+                                    <div *ngIf="submitted && f.class.errors" class="invalid-feedback">
+                                        <div *ngIf="f.class.errors.required">Class is required</div>
+                                        <div *ngIf="f.class.errors.maxlength">Maximum Length is 2</div>
+                                      </div>
+                                
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group"> <label for="form_message">Comment *</label> <textarea id="form_message" name="message" class="form-control" placeholder="Write  message here." rows="4" required="required" [ngClass]="{ 'is-invalid': submitted && f.Message.errors }" formControlName="Message" ></textarea> </div>
+                               
+                                    <div *ngIf="submitted && f.Message.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Message.errors.required">Message is required</div>
+                                        <div *ngIf="f.Message.errors.minlength">Minimum Length is 6</div>
+                                        <div *ngIf="f.Message.errors.maxlength">Maximum Length is 20</div>
+                                      </div>
+                                </div>
+                                <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+</div>
+</div>
+

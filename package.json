@@ -24,6 +24,7 @@
     "@igniteui/material-icons-extended": "^2.8.0",
     "@juggle/resize-observer": "^3.3.0",
     "angularfire2": "^5.4.2",
+    "bootstrap": "^5.1.3",
     "classlist.js": "1.1.20150312",
     "feather-icons": "^4.28.0",
     "firebase": "^7.24.0",

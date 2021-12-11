@@ -11,9 +11,13 @@ import { AuthService } from './auth.service';
 })
 
 export class AppComponent {
-
+User:any;
   isLoggedIn:boolean=false;
-  constructor(private _authService:AuthService, private router:Router) {}
+  constructor(private _authService:AuthService, private router:Router) {
+    this._authService.profileInfo.subscribe(res=>{
+      this.User=res;
+    })
+  }
 
   ngOnInit():void{
 

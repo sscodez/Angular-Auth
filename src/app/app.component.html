@@ -6,11 +6,13 @@
         <div class="d-flex">
          
         <!-- <button class="btn btn-success mx-4 "  routerLink="/modal">Home</button> -->
-     <button class="btn btn-primary mx-1 " *ngIf="!isLoggedIn" routerLink="/sign-in">Sign in</button>
+        <button class="btn btn-primary mx-1 " *ngIf="!isLoggedIn" routerLink="/sign-in">Sign in</button>
+      
+  
      <div class="action" *ngIf="isLoggedIn"   
      >
       <div class="profile" (click)="clickEvent()"  >
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3xq6yMAh7HKpnLoT17HDDvOIAJb0u98jPw&usqp=CAU&reload=on">
+        <img src="{{User.photoUrl}}">
       </div> 
       <div  [ngClass]="status ? 'active' : 'menu'">
      

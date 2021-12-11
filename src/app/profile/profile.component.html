@@ -8,7 +8,7 @@
                     <label class="form-control-label px-3">Edit mode: <span class="badge "
                             [ngClass]="{'badge-success':!editMode,'badge-danger':editMode}">{{editMode}}</span></label>
                     <button type="button" class="btn btn-success  flex-column d-flex " routerLink="/profile"
-                        [queryParams]="{EditMode:true}">Edit Profile</button>
+                        [queryParams]="{EditMode:true}" *ngIf="!editMode">Edit Profile</button>
 
                 </div>
                 <br>
@@ -19,7 +19,7 @@
                         <div class="form-group col-sm-12 flex-column d-flex"> <label>{{editMode ?'Enter' : ''}}
                                 Name<span class="text-danger"> *</span></label>
                             <h6><span *ngIf="!editMode" class="badge badge-warning text-left ">{{profileInfo.displayName}}</span></h6>
-                            <input *ngIf="editMode" type="text" id="name" name="name"  formControlName="name"
+                            <input *ngIf="editMode" type="text" id="name" name="name"  formControlName="name" value="name" 
                                 placeholder="Enter your first name">
                         </div>
                     </div>
@@ -28,9 +28,9 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label>{{editMode ?'Enter' : ''}} Profile
                                 Picture URL<span class="text-danger"> *</span></label>
-                            <h6><span *ngIf="!editMode"
-                                    class="badge badge-warning text-left ">{{profileInfo.photoUrl}}</span></h6>
-                            <input *ngIf="editMode"   formControlName="url" type="text" id="url" name="url" placeholder="Enter Picture Url">
+                            <div><img *ngIf="!editMode"
+                                   src="{{profileInfo.photoUrl}}" /></div>
+                            <input *ngIf="editMode" value="picture"  formControlName="picture" type="text" id="url" name="url" placeholder="Enter Picture Url">
                         </div>
                     </div>
                     <br>

@@ -24,13 +24,13 @@ export class SignInComponent implements OnInit {
   error:string;
   errMsgs:any=this._errService.errorsMsgs;
   form: FormGroup;
-
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,private _authService:AuthService,private _errService:ErrorService,private router:Router) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      email: [null,[ Validators.required,Validators.email]],
+      email: [null,[ Validators.required,Validators.email,Validators.pattern("[^ @]*@[^ @]*")]],
       password: [null, [Validators.required,Validators.minLength(4)]],
  
       })
@@ -39,11 +39,12 @@ export class SignInComponent implements OnInit {
   {
     this.loginMode=!this.loginMode;
   }
+  get f() { return this.form.controls; }
   resetForm() { 
     this.form.reset();
   }  
   onSubmit() {
-    
+    this.submitted = true;
     if(this.form.valid)
     {
     

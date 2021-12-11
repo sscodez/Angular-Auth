@@ -6,22 +6,25 @@ import {
   FormControl
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
+
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  selector: 'app-forgotpassword',
+  templateUrl: './forgotpassword.component.html',
+  styleUrls: ['./forgotpassword.component.css']
 })
-export class ChangePasswordComponent implements OnInit {
+
+export class ForgotpasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private _authService:AuthService) { }
   form: FormGroup;
   showpassword:boolean;
   success:boolean=false;
+  error:any=null;
   token =JSON.parse(localStorage.getItem('UserData')||'{}')._token;
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      password: [null, [Validators.required,Validators.minLength(4)]],
+      email: [null, [Validators.required]],
  
       })
   }
@@ -38,9 +41,6 @@ export class ChangePasswordComponent implements OnInit {
 
     }
   }
-  onModeSwitch()
-  {
-    this.showpassword=!this.showpassword;
-  }
+  
 
 }

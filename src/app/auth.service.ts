@@ -16,7 +16,7 @@ const API_KEY= 'AIzaSyCOSqnwU84C021yRXqBDGu6ODPjpr6wGoo';
 })
 export class AuthService {
 
-  user =new Subject<User>();
+  user =new BehaviorSubject<User>(null);
 
 profileInfo= new BehaviorSubject({
   displayName:'',
@@ -51,23 +51,9 @@ profileInfo= new BehaviorSubject({
    })
    ); 
   }
-  autoSignIn(){
-    const userData=JSON.parse(localStorage.getItem('UserData') || '{}');
-    if(!userData)
-    {  
-      return;
-    }
-    const loggedInUser = new User (userData.email,userData.userId,userData._token,new Date(userData._expirationDate))
-    if(loggedInUser.token1)
-    {
-      this.user.next(loggedInUser);
-      // const expirationDate=new Date(userData._expirationDate).getTime()-new Date().getTime()
-      // this.autoSignOut(expirationDate);
-    }
-  }
- 
+
   SignOut(){
-    this.user.next(undefined);
+    this.user.next(null);
     this.router.navigate(['sign-in']);
     localStorage.removeItem('UserData');
 
@@ -76,18 +62,35 @@ profileInfo= new BehaviorSubject({
     }
     this.tokenExpirationTimer=null;
   }
-  autoSignOut(expirationDuration:number)
+  autoSignOut(expirationDuration:any)
   {  
     this.tokenExpirationTimer=setTimeout(() => {
       this.SignOut()
     }, expirationDuration);
   }
+  autoSignIn(){
+    const userData=JSON.parse(localStorage.getItem('UserData'));
+    if(!userData)
+    {  
+      return;
+    }
+    const loggedInUser = new User (userData.email,userData.userId,userData._token,new Date(userData._expirationDate))
+    if(loggedInUser.token)
+    {
+      this.user.next(loggedInUser);
+      const expirationDuration=new Date(userData._expirationDate).getTime() - new Date().getTime()
+      // this.autoSignOut(expirationDuration);
+     this.getUserData(loggedInUser.token);
+    }
+  }
+ 
+
   private auhenticateUser(email:string,userId:string,token:string,expiresIn:any){
-    const expirationDate =new Date(new Date().getTime()+expiresIn*1000)
+    const expirationDate =new Date(new Date().getTime() + expiresIn*1000)
     const user = new User (email,userId,token,expirationDate)
     console.log('user=>',user)
     this.user.next(user);
-    this.autoSignOut(expiresIn*1000)
+     this.autoSignOut(expiresIn*1000)
     localStorage.setItem('UserData',JSON.stringify(user))
     this.getUserData(token);
   }
@@ -112,6 +115,9 @@ profileInfo= new BehaviorSubject({
  
   }
      ).subscribe(res=>{
+       console.log({ displayName:res.users[0].displayName,
+        email:res.users[0].email,
+        photoUrl:res.users[0].photoUrl})
       this.profileInfo.next({
         displayName:res.users[0].displayName,
         email:res.users[0].email,
@@ -120,6 +126,30 @@ profileInfo= new BehaviorSubject({
      })
   }
 
+
+  changePassword(data:any){
+  return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${API_KEY}`,{
+ 
+    idToken:data.idToken,
+    password:data.password,
+    returnSecureToken:true
+ 
+  }).pipe(catchError(err=>{
+    return this._errService.handleError(err);
+  })
+    
+    )
+
+
+}
+  forgotPassword(data:any){
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${API_KEY}`,{
+      requestType:'PASSWORD_RESET',
+      email:data.email
+    }).pipe(catchError(err=>{
+      return this._errService.handleError(err);
+    }))}
+  
 
 }
 // 
